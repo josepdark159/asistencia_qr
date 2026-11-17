@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-labelledby="title">
+  <title id="title">Escudo de Fe y Alegría 41 Calasanz</title>
+  <defs>
+    <path id="upper-arc" d="M 57 166 A 123 123 0 0 1 303 166"/>
+    <path id="lower-arc" d="M 58 201 A 123 123 0 0 0 302 201"/>
+  </defs>
+  <circle cx="180" cy="180" r="171" fill="#fff" stroke="#b31b2b" stroke-width="4"/>
+  <circle cx="180" cy="180" r="151" fill="none" stroke="#b31b2b" stroke-width="2"/>
+  <text fill="#b31b2b" font-family="Georgia, serif" font-size="24" font-weight="700" letter-spacing="5">
+    <textPath href="#upper-arc" startOffset="50%" text-anchor="middle">FE Y ALEGR&#xED;A 41</textPath>
+  </text>
+  <text fill="#b31b2b" font-family="Georgia, serif" font-size="22" font-weight="700" letter-spacing="7">
+    <textPath href="#lower-arc" startOffset="50%" text-anchor="middle">CALASANZ</textPath>
+  </text>
+  <g fill="#b31b2b">
+    <path d="M180 46 190 91 170 91Z"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(15 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(30 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(45 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(60 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(75 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(90 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(105 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(120 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(135 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(150 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(165 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(180 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(195 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(210 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(225 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(240 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(255 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(270 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(285 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(300 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(315 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(330 180 180)"/>
+    <path d="M180 46 190 91 170 91Z" transform="rotate(345 180 180)"/>
+  </g>
+  <circle cx="180" cy="180" r="91" fill="#fff" stroke="#b31b2b" stroke-width="3"/>
+  <path fill="#b31b2b" d="M180 253c-8-7-72-45-72-84 0-35 43-50 72-18 29-32 72-17 72 18 0 39-64 77-72 84Z"/>
+  <g fill="#fff">
+    <circle cx="145" cy="162" r="12"/>
+    <circle cx="180" cy="153" r="13"/>
+    <circle cx="215" cy="162" r="12"/>
+    <path d="M124 196c0-14 8-22 21-22s21 8 21 22v16h-42Z"/>
+    <path d="M157 194c0-17 9-27 23-27s23 10 23 27v19h-46Z"/>
+    <path d="M194 196c0-14 8-22 21-22s21 8 21 22v16h-42Z"/>
+    <path d="m144 210 18 18 18-18 18 18 18-18" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+  </g>
+</svg>
