@@ -98,7 +98,7 @@ require __DIR__ . '/includes/header.php';
         <a class="module-item module-link" href="alumnos.php"><span class="module-number">01</span><div><h3>Alumnos</h3><p>Registrar, buscar e imprimir credenciales QR.</p></div><span class="module-arrow" aria-hidden="true">→</span></a>
         <a class="module-item module-link" href="escanear.php"><span class="module-number">02</span><div><h3>Escanear QR</h3><p>Registrar la entrada desde la cámara o el token.</p></div><span class="module-arrow" aria-hidden="true">→</span></a>
         <a class="module-item module-link" href="asistencia.php"><span class="module-number">03</span><div><h3>Asistencia diaria</h3><p>Revisar la lista y actualizar estados.</p></div><span class="module-arrow" aria-hidden="true">→</span></a>
-        <a class="module-item module-link" href="reportes.php"><span class="module-number">04</span><div><h3>Reportes</h3><p>Filtrar por fechas y descargar CSV.</p></div><span class="module-arrow" aria-hidden="true">→</span></a>
+        <a class="module-item module-link" href="reportes.php"><span class="module-number">04</span><div><h3>Reportes</h3><p>Filtrar por fechas y descargar en Excel.</p></div><span class="module-arrow" aria-hidden="true">→</span></a>
     </div>
 </section>
 <?php require __DIR__ . '/includes/footer.php'; ?>

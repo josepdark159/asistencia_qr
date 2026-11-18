@@ -35,22 +35,48 @@ $statement = $pdo->prepare($sql);
 $statement->execute($parameters);
 $records = $statement->fetchAll();
 
-// Si se solicita CSV, descarga el resultado y protege las celdas contra fórmulas.
-if (isset($_GET['csv'])) {
-    header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename="asistencias_' . $from . '_' . $to . '.csv"');
-    $output = fopen('php://output', 'w');
-    fwrite($output, "\xEF\xBB\xBF");
-    fputcsv($output, ['Fecha', 'Hora', 'Código', 'Apellidos', 'Nombres', 'Grado de primaria', 'Sección', 'Estado'], ';');
-    foreach ($records as $record) {
-        $values = [$record['fecha'], $record['hora'], $record['codigo'], $record['apellidos'], $record['nombres'], $record['grado'], $record['seccion'], $record['estado']];
-        $values = array_map(static function ($value) {
-            $value = (string) $value;
-            return preg_match('/^[=+@-]/', $value) ? "'" . $value : $value;
-        }, $values);
-        fputcsv($output, $values, ';');
+// Exporta el reporte como hoja compatible con Microsoft Excel.
+if (isset($_GET['excel']) || isset($_GET['csv'])) {
+    $excelEscape = static function ($value): string {
+        $value = (string) $value;
+        if (preg_match('/^[=+@-]/', $value)) {
+            $value = "'" . $value;
+        }
+        return htmlspecialchars($value, ENT_XML1 | ENT_QUOTES, 'UTF-8');
+    };
+
+    header('Content-Type: application/vnd.ms-excel; charset=utf-8');
+    header('Content-Disposition: attachment; filename="asistencias_' . $from . '_' . $to . '.xls"');
+    header('Cache-Control: private, max-age=0');
+
+    echo '<?xml version="1.0" encoding="UTF-8"?>';
+    echo '<?mso-application progid="Excel.Sheet"?>';
+    echo '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">';
+    echo '<Worksheet ss:Name="Asistencias"><Table>';
+    echo '<Row>';
+    foreach (['Fecha', 'Hora', 'Código', 'Apellidos', 'Nombres', 'Grado de primaria', 'Sección', 'Estado'] as $heading) {
+        echo '<Cell><Data ss:Type="String">' . $excelEscape($heading) . '</Data></Cell>';
     }
-    fclose($output);
+    echo '</Row>';
+
+    foreach ($records as $record) {
+        echo '<Row>';
+        foreach ([
+            $record['fecha'],
+            $record['hora'],
+            $record['codigo'],
+            $record['apellidos'],
+            $record['nombres'],
+            $record['grado'],
+            $record['seccion'],
+            $record['estado'],
+        ] as $value) {
+            echo '<Cell><Data ss:Type="String">' . $excelEscape($value) . '</Data></Cell>';
+        }
+        echo '</Row>';
+    }
+
+    echo '</Table></Worksheet></Workbook>';
     exit;
 }
 
@@ -74,7 +100,7 @@ require __DIR__ . '/includes/header.php';
             <label>Grado de primaria<select name="grado"><option value="">Todos</option><?php foreach ($grades as $item): ?><option value="<?= escapar($item) ?>" <?= $grade === $item ? 'selected' : '' ?>><?= escapar($item) ?></option><?php endforeach; ?></select></label>
             <label>Sección<select name="seccion"><option value="">Todas</option><?php foreach ($sections as $item): ?><option value="<?= escapar($item) ?>" <?= $section === $item ? 'selected' : '' ?>><?= escapar($item) ?></option><?php endforeach; ?></select></label>
             <button class="button secondary" type="submit">Consultar</button>
-            <button class="button primary" type="submit" name="csv" value="1">Exportar CSV</button>
+            <button class="button primary" type="submit" name="excel" value="1">Exportar Excel</button>
         </form>
     </div>
     <div class="summary-grid">
